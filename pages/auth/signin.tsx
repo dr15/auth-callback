@@ -1,8 +1,6 @@
 import { Button, Card, Center, Flex } from "@mantine/core";
-import type { SignInResponse } from "next-auth/react";
 import { getProviders, signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
-import type { NextRouter } from "next/router";
 import type { GetServerSideProps } from "next/types";
 import type { ReactElement } from "react";
 import { getRedirectForSignedInUser } from "@/server/get-redirect-for-signed-in-user";

@@ -26,7 +26,7 @@ export default function Layout({
               <Link href="/protected/one">One</Link>
               <Link href="/protected/two">Two</Link>
               <Link href="/protected/three">Three</Link>
-              <Button onClick={() => signOut()}>Log out</Button>
+              <Button onClick={() => signOut()}>Sign out</Button>
             </Group>
           )}
         </Group>
