@@ -1,40 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Auth Callback
 
-## Getting Started
+This project demonstrates a minimal setup using Next.js and Auth.js to showcase the behavior of authentication callbacks after signing in. The key focus is on how the application handles the redirect after the user signs in, specifically how it always uses the last callback stored in the cookie.
 
-First, run the development server:
+## Table of Contents
 
-```bash
+- [Installation](#installation)
+- [Usage](#usage)
+- [How It Works](#how-it-works)
+- [Issues](#issues)
+- [License](#license)
+
+## Installation
+
+To get started with the project, clone the repository and install the dependencies:
+
+```
+git clone https://github.com/dr15/auth-callback.git
+cd auth-callback
+npm install
+```
+
+## Usage
+
+To run the development server:
+
+```
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## How It Works
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+This project utilizes Next.js for the frontend framework and Auth.js for handling authentication. Here is a brief overview of the flow:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. **User Navigation**: As the user navigates through the application.
+2. **User Sign Out**: When the user signs out, the last visited page URL remains is stored in a cookie.
+3. **Accessing Protected Page**: If the user tries to access a protected page while signed out, they are redirected to the sign-in page.
+4. **Post Sign-In Redirect**: After signing in, instead of being redirected to the originally requested page, the user is redirected to the last page stored in the cookie (the last page they visited before signing out).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Issues
 
-## Learn More
+- **Incorrect Redirect**: The primary issue demonstrated by this project is that users do not get redirected to the originally requested page after signing in if they were signed out. Instead, they are redirected to the last page stored in the cookie.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License.
