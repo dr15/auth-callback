@@ -5,7 +5,6 @@ import type { GetServerSideProps } from "next/types";
 import type { ReactElement } from "react";
 import { getRedirectForSignedInUser } from "@/server/get-redirect-for-signed-in-user";
 import { SvgIconWrapper } from "@/components/SvgIconWrapper";
-import { providerMap } from "@/server/auth";
 
 const googleLogo = SvgIconWrapper({
   path: "/google.svg",
@@ -64,7 +63,7 @@ export default function SignIn({
     <Center h="100%" bg="gray.0">
       {error && <Card shadow="none">{errorStrings[error]}</Card>}
       <Flex gap={12} direction="column">
-        {Object.values(providerMap)
+        {Object.values(providers)
           .filter((provider) => ["oidc", "oauth"].includes(provider.type))
           .map((provider) => (
             <Button
@@ -96,9 +95,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (redirect) return redirect;
 
-  console.log("# 3");
+  // Return data for signin page
+  const providers = await getProviders();
+
+  console.log("# 3", providers);
 
   return {
-    props: {},
+    props: { providers },
   };
 };
