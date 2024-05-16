@@ -19,7 +19,6 @@ const providers: Provider[] = [
 ];
 
 const config = {
-  secret: process.env.AUTH_SECRET,
   providers,
   pages: {
     signIn: "/auth/signin",
