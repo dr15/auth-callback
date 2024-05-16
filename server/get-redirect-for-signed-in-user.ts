@@ -5,12 +5,12 @@ export async function getRedirectForSignedInUser(
   context: GetServerSidePropsContext,
 ): Promise<
   | {
-      redirect: {
-        permanent: boolean;
-        destination: string;
-      };
-      props: object;
-    }
+  redirect: {
+    permanent: boolean;
+    destination: string;
+  };
+  props: object;
+}
   | undefined
 > {
   const session = await auth(context);
