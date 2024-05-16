@@ -51,7 +51,7 @@ export default function SignIn({
 }: {
   providers: {
     [providerName: string]: { name: string; id: string; type: string };
-  };
+  } | null;
 }) {
   console.log("# 4");
 
@@ -63,7 +63,7 @@ export default function SignIn({
     <Center h="100%" bg="gray.0">
       {error && <Card shadow="none">{errorStrings[error]}</Card>}
       <Flex gap={12} direction="column">
-        {Object.values(providers)
+        {providers && Object.values(providers)
           .filter((provider) => ["oidc", "oauth"].includes(provider.type))
           .map((provider) => (
             <Button
