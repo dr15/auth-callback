@@ -53,8 +53,6 @@ export default function SignIn({
     [providerName: string]: { name: string; id: string; type: string };
   } | null;
 }) {
-  console.log("# 4");
-
   const searchParams = useSearchParams();
   const error = searchParams?.get("error");
   const callbackUrl = searchParams?.get("callbackUrl");
@@ -88,17 +86,12 @@ export default function SignIn({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  console.log("# 1");
   // If user is already logged in, redirect them from signin page to the page they were trying to access
   const redirect = await getRedirectForSignedInUser(context);
-  console.log("# 2", redirect);
-
   if (redirect) return redirect;
 
   // Return data for signin page
   const providers = await getProviders();
-
-  console.log("# 3", providers);
 
   return {
     props: { providers },

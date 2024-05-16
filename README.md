@@ -19,7 +19,12 @@ git clone https://github.com/dr15/auth-callback.git
 cd auth-callback
 npm install
 ```
-
+Create a `.env.local` file and add these env variables (with actual values):
+```
+AUTH_SECRET=
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
+```
 ## Usage
 
 To run the development server:
